@@ -1,4 +1,3 @@
-// https://zerotomastery.io/blog/golang-practice-projects/
 package main
 
 import "fmt"
@@ -18,14 +17,14 @@ func getSliceByCardNumber(cardNumber int) []int {
 
 
 func doubleEverySecondInSlice(nums []int) {
-	for i := 1; i < len(nums); i += 2 {
+	for i := len(nums) - 2; i >= 0; i -= 2 {
 		nums[i] *= 2
 	}
 }
 
 
 func replaceEverySecondByCondition(nums []int) {
-	for i := 1; i < len(nums); i += 2 {
+	for i := len(nums) - 2; i >= 0; i -= 2 {
 		if nums[i] > 9 {
 			// Getting first and second digits of nums[i]
 			copyNum := nums[i]
@@ -51,34 +50,22 @@ func getSumOfSlice(nums []int) int {
 
 
 
-func isCardValid(cardNumber int) bool{
+func isCardValid(cardNumber int) bool {
 	nums := getSliceByCardNumber(cardNumber)
 	doubleEverySecondInSlice(nums)
 	replaceEverySecondByCondition(nums)
 	sumRes := getSumOfSlice(nums)
 
 	if sumRes % 10 == 0 {
-		
-	}
+		return true
+	} 
+
+	return false
 
 }
 
 
 func main() {
-	cardNumber := 7992739871
-	arr := getSliceByCardNumber(cardNumber)
-	doubleEverySecondInSlice(arr)
-	replaceEverySecondByCondition(arr)
-	sum := getSumOfSlice(arr)
-	if sum % 10 == 0{
-		fmt.Println("Correct")
-	} else {
-		fmt.Println("Incorrect")
-	}
-
-
-
-
-
-	
+	cardNumber := 5168745156274455
+	fmt.Println(isCardValid(cardNumber)) 
 }
