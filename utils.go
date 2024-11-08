@@ -46,7 +46,7 @@ func getSumOfSlice(nums []int) int {
 }
 
 
-func IsCardValid(cardNumber int) bool {
+func isCardValid(cardNumber int) bool {
 	nums := getSliceByCardNumber(cardNumber)
 	doubleEverySecondInSlice(nums)
 	replaceEverySecondByCondition(nums)
